@@ -1,0 +1,28 @@
+{
+  "name": "Furry_Game",
+  "version": "1.0.0",
+  "description": "<img alt=\"Logo\" src=\"http://coderslab.pl/svg/logo-coderslab.svg\" width=\"400\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maciejf85/Furry_Game.git"
+  },
+  "keywords": [],
+  "author": "Maciej Fiałkowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maciejf85/Furry_Game/issues"
+  },
+  "homepage": "https://github.com/Maciejf85/Furry_Game#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1"
+  }
+}
