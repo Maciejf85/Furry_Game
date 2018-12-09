@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync');
-var sourcemaps = require('gulp-sourcemaps'); 
+// var sourcemaps = require('gulp-sourcemaps'); 
 var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 
@@ -20,12 +20,12 @@ gulp.task('serve', function(){
 
 gulp.task('sass', function() {
 return gulp.src('scss/main.scss')
-.pipe(sourcemaps.init())               
+// .pipe(sourcemaps.init())               
 .pipe(sass({
     errLogToConsole: true,
-    outputStyle: 'nested' //nested, expanded, compact, compressed.
+    outputStyle: 'compressed' //nested, expanded, compact, compressed.
 }))
-.pipe(sourcemaps.write())           
+// .pipe(sourcemaps.write())           
 .pipe(autoprefixer({
     browsers: ['last 3 versions']
 }))   
@@ -47,7 +47,7 @@ gulp.task('watch', ['sass', 'serve'], function(){
 
 
 // 1. npm init -y
-// 2. npm i -D gulp gulp-sass gulp browser-sync gulp-sourcemaps gulp-autoprefixer gulp-uglify
+// 2. npm i -D gulp gulp-sass gulp browser-sync gulp-sourcemaps gulp-autoprefixer gulp-uglify gulp-html-replace gulp-htmlmin
 
 // 3. gulp watch
 // 4. gulp js
