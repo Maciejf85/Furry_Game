@@ -1,11 +1,10 @@
-const {resolve} = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {resolve} = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-
      entry: './src/js/app.js',
-
-     mode: 'production',
+     mode: 'development',
 
      output: {
           filename: 'bundle.js',
@@ -26,11 +25,18 @@ module.exports = {
             },
             {
                  test: /\.scss$/,
-               use: [
-                   "style-loader", // creates style nodes from JS strings
-                   "css-loader", // translates CSS into CommonJS
-                   "sass-loader" // compiles Sass to CSS, using Node Sass by default
-               ]},
+                 use: [{
+                  loader: "style-loader"
+              }, {
+                  loader: "css-loader", options: {
+                      sourceMap: false
+                  }
+              }, {
+                  loader: "sass-loader", options: {
+                      sourceMap: false
+                  }
+              }]
+              },
                {
                     test: /\.(png|jpg|gif)$/i,
                     use: [
@@ -41,7 +47,21 @@ module.exports = {
                         }
                       }
                     ]
-               }
+               },
+               {
+                test: /\.css$/,
+                use: [
+                  {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                      // you can specify a publicPath here
+                      // by default it use publicPath in webpackOptions.output
+                      publicPath: '../'
+                    }
+                  }
+                ]
+              }
+
           ]
         },
         plugins: [
@@ -49,6 +69,9 @@ module.exports = {
                title: 'Furry Game',
                filename: 'index.html',
                template: './index.html'
+          }),
+          new MiniCssExtractPlugin({
+           filename: "main.css"
           })
         ]
 }
