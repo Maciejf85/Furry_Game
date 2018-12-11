@@ -1,10 +1,11 @@
-const {resolve} = require('path');
+const {resolve} = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 
      entry: './src/js/app.js',
 
-     mode: 'development',
+     mode: 'production',
 
      output: {
           filename: 'bundle.js',
@@ -42,5 +43,12 @@ module.exports = {
                     ]
                }
           ]
-        }
+        },
+        plugins: [
+          new HtmlWebpackPlugin({  
+               title: 'Furry Game',
+               filename: 'index.html',
+               template: './index.html'
+          })
+        ]
 }
