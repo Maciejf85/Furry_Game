@@ -57,13 +57,13 @@ height: 64px;
 
 .furry {
 height: 100%;
-background-image: url('../images/furry.png');
+background-image: url('../img/furry.png');
 background-repeat: no-repeat;
 background-size: cover;
 }
 .coin {
  height: 100%;
-background-image: url('../images/coin.png');
+background-image: url('../img/coin.png');
 background-repeat: no-repeat;
 background-size: cover;
 
@@ -112,17 +112,17 @@ section#over pre {
 .mediumBtn,
 .hardBtn{
  width: 170px;
- background-image: url('../images/Easy.png');
+ background-image: url('../img/Easy.png');
  background-repeat: no-repeat;
  background-size: contain;
  // @include elemHover;
  filter: grayscale(55%) ;
 }
 .mediumBtn{
- background-image: url('../images/Medium\ btn.png');
+ background-image: url('../img/Medium.png');
 }
 .hardBtn{
- background-image: url('../images/Hard\ btn.png');    
+ background-image: url('../img//Hard.png');    
 }
 .easyBtn:hover,
 .mediumBtn:hover,
@@ -133,7 +133,7 @@ section#over pre {
 }
 
 .score{
- background-image: url('../images/Points.png');
+ background-image: url('../img/Points.png');
  background-repeat: no-repeat;
  background-size: contain;
 }
