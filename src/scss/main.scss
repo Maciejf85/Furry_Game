@@ -49,10 +49,12 @@ height: 100px;
 }
 
 #board  > div {    
- border: 1px solid #2c2c2c;
+position: relative;
+border: 1px solid #2c2c2c;
 float: left;
 width: 64px;
 height: 64px;
+overflow: visible;
 }
 
 .furry {
@@ -70,7 +72,6 @@ background-size: cover;
 //  @include elemHover;
 
 }
-
 
 section#over {
  position: fixed;
@@ -97,7 +98,7 @@ section#over pre {
 
 @for $i from 1 through 100 {
  .box-#{$i}{
-   background: hsl(0 + ($i + 36) , 70%, 60%);
+   background: hsl(36 + ($i + 72) , 70%, 60%);
  }
 }
 
@@ -141,15 +142,65 @@ filter: grayscale(0);
 }
 
 @keyframes blinking {
-0%{
- opacity: 1;
+  0%{
+  opacity: 1;
+  }
+  50%{
+  opacity: 0;
+  }
+  100%{
+  opacity: 1;
+  }
 }
-50%{
- opacity: 0;
+.girl {
+  position: absolute;
+  top:30%;
+  left:50%;
+  transform: translate(-50% ,-50%);
+	width: 40px;
+	height:90px;
+  background-image: url(../img/person.png);
+  background-repeat: no-repeat;
+  //  border: 1px solid red;
+  animation-name: walk-right;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(5);
+  animation-fill-mode: both;
 }
-100%{
- opacity: 1;
-}
-}
+@keyframes walk-right {
+  0% { 
+      background-position:-134px -213px;
+  }
+  100% { 
+      background-position:  -634px -212px;
 
+  }
+}
+@keyframes walk-left {
+  0% { 
+    background-position:-130px -312px;
+  }
+  100% { 
+    background-position:  -629px -312px;
+    
+  }
+}
+@keyframes walk-up {
+  0% { 
+      background-position:-135px -110px;
+  }
+  100% { 
+      background-position:  -635px -110px;
 
+  }
+}
+@keyframes walk-down {
+  0% { 
+      background-position:-133px -8px;
+  }
+  100% { 
+      background-position: -633px -8px;
+
+  }
+}

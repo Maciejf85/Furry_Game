@@ -29,11 +29,11 @@ module.exports = {
                   loader: "style-loader"
               }, {
                   loader: "css-loader", options: {
-                      sourceMap: false
+                      sourceMap: true
                   }
               }, {
                   loader: "sass-loader", options: {
-                      sourceMap: false
+                      sourceMap: true
                   }
               }]
               },
@@ -43,7 +43,7 @@ module.exports = {
                       {
                         loader: 'url-loader',
                         options: {
-                          limit: 16384 // 16Kb
+                          // limit: 51200 // 50Kb
                         }
                       }
                     ]
