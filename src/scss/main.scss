@@ -54,23 +54,19 @@ border: 1px solid #2c2c2c;
 float: left;
 width: 64px;
 height: 64px;
-overflow: visible;
 }
 
-.furry {
-height: 100%;
-background-image: url('../img/furry.png');
+.diamond {
+position: absolute;
+top:50%;
+left: 50%;
+transform: translate(-50%, -50%);
+height: 70%;
+width: 70%;
+background-image: url('../img/diamond-1.png');
 background-repeat: no-repeat;
-background-size: cover;
-}
-.coin {
- height: 100%;
-background-image: url('../img/coin.png');
-background-repeat: no-repeat;
-background-size: cover;
-
+background-size: contain;
 //  @include elemHover;
-
 }
 
 section#over {
@@ -98,7 +94,7 @@ section#over pre {
 
 @for $i from 1 through 100 {
  .box-#{$i}{
-   background: hsl(36 + ($i + 72) , 70%, 60%);
+   background: hsl(50 + ($i * 2) , 70%, 60%);
  }
 }
 
@@ -163,11 +159,23 @@ filter: grayscale(0);
   background-repeat: no-repeat;
   //  border: 1px solid red;
   animation-name: walk-right;
-  animation-duration: 0.8s;
+  animation-duration: 0.65s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(5);
   animation-fill-mode: both;
 }
+.left{
+  animation-name: walk-left;
+}
+
+.down{
+  animation-name: walk-down;
+}
+
+.up{
+  animation-name: walk-up;
+}
+
 @keyframes walk-right {
   0% { 
       background-position:-134px -213px;

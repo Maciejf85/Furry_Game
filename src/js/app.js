@@ -1,25 +1,52 @@
 import '../scss/main.scss';
-import { create } from 'domain';
 
-
-var points = document.getElementById('points');
-var counter = 0;
-var animation = document.querySelector('.girl');
-var boxes = document.querySelectorAll('#board > div');
-
-console.log(boxes)
-
-
-var time = setInterval(function(){
+var cnt = 0;
+const easy = 500,
+     medium = 150,
+     hard = 100;
      
-     counter++ ;
-     // if(counter < 5) animation.style.WebkitAnimationName  = "walk-right";
-     // if(counter > 5 && counter < 10 ) animation.style.WebkitAnimationName  = "walk-down";
-     // if(counter > 10 && counter < 15 ) animation.style.WebkitAnimationName  = "walk-left";
-     // if(counter > 15 && counter < 20 ) animation.style.WebkitAnimationName  = "walk-up";
+var character = document.createElement('div');
+     character.classList.add('girl');
 
-     if(counter > 20)  counter = 0;
-     points.innerHTML = counter;
-},1000);
+var diamond = document.createElement('div');
+     diamond.classList.add('diamond');
+
+var Character = function() {
+     this.x = 0,
+     this.y = 0,
+     this.direction = "right"
+}
+
+var Diamond = function() {
+     this.x = Math.floor(Math.random() * 10),
+     this.y = Math.floor(Math.random() * 10)
+}
+
+var Game = function() {
+     this.char = new Character();
+     this.diamond = new Diamond();
+     this.board = document.querySelectorAll('#board > div');
+     this.score =  0;
+     this.scoreBoard = document.getElementById('points');
+
+     this.position = function(x,y) {
+          return x + (y * 10);
+     }     
+
+     this.showCharacter = function() {
+          this.board[this.position(this.diamond.x , this.diamond.y)].appendChild(diamond);
+     }
+
+     this.showDiamond = function(){
+          this.board[this.position(this.char.x , this.char.y)].appendChild(character);
+     }
+
+
+}
+
+var game = new Game();
+
+game.showCharacter();
+game.showDiamond();
 
 
