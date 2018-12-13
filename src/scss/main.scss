@@ -4,13 +4,12 @@
   box-sizing: border-box;
 }
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
-@mixin elemHover{
-&:hover{
- animation-name: blinking;
- animation-duration: 1s;
- animation-iteration-count: infinite;
- transition: cubic-bezier(0,1.01,.98,.1);
-}
+@mixin getIn{
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  transition: ease-in-out;
 }
 body {
 position: relative;
@@ -38,7 +37,7 @@ height: 100px;
  position: absolute;
  top:35px;
  right: 20px;
- color: rgb(255, 162, 0);
+ color: #ffa200;
 }
 }
 
@@ -66,7 +65,7 @@ width: 70%;
 background-image: url('../img/diamond-1.png');
 background-repeat: no-repeat;
 background-size: contain;
-//  @include elemHover;
+ @include getIn;
 }
 
 section#over {
@@ -85,7 +84,7 @@ section#over pre {
  text-align: center;
  font-size: 10px;
  font-weight: bolder;
- color: rgb(129, 0, 0);
+ color: #810000;
 }
 
 .invisible {
@@ -94,7 +93,7 @@ section#over pre {
 
 @for $i from 1 through 100 {
  .box-#{$i}{
-   background: hsl(50 + ($i * 2) , 70%, 60%);
+   background: hsl(50 + ($i * 2) , 40%, 60%);
  }
 }
 
@@ -111,7 +110,6 @@ section#over pre {
  background-image: url('../img/Easy.png');
  background-repeat: no-repeat;
  background-size: contain;
- // @include elemHover;
  filter: grayscale(55%) ;
 }
 .mediumBtn{
@@ -137,15 +135,20 @@ section#over pre {
 filter: grayscale(0);
 }
 
-@keyframes blinking {
+@keyframes fadeIn {
   0%{
-  opacity: 1;
+  opacity: 0;
+  transform:  translate(-50%, -50%) scale(0);
+  }
+  25%{
+    transform:  translate(-50%, -50%) scale(1.2);
   }
   50%{
-  opacity: 0;
+    opacity: 1;
+    transform:  translate(-50%, -50%) scale(0.8);
   }
   100%{
-  opacity: 1;
+  transform:  translate(-50%, -50%) scale(1);
   }
 }
 .girl {
@@ -158,11 +161,13 @@ filter: grayscale(0);
   background-image: url(../img/person.png);
   background-repeat: no-repeat;
   //  border: 1px solid red;
-  animation-name: walk-right;
-  animation-duration: 0.65s;
+  animation-duration: 0.9s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(5);
   animation-fill-mode: both;
+}
+.right{
+  animation-name: walk-right;
 }
 .left{
   animation-name: walk-left;
