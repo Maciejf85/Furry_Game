@@ -19,7 +19,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: -webkit-linear-gradient(top, #d4e4ef 0%, #86aecc 100%); 
+  background: -webkit-linear-gradient(top, #d4e4ef 0%, #439043 100%); 
  }
 
 .container{
@@ -86,7 +86,9 @@ display: none;
     }
   }
 }
-
+.backgroundContainer{
+  position: relative;
+}
 .startBoard{
   display: none;
   position: relative;
@@ -316,9 +318,21 @@ filter: grayscale(0);
 }
 .mark{
   text-align: right;
+  font-family: 'Carter One', cursive;
   position: fixed;
   bottom: 10px;
   right: 10px;
   color: white;
   opacity: 0.5;
+}
+.palm1{
+  position: absolute;
+  top:30px;
+  left:-335px;
+  width: 474px;
+  height: 600px;
+  transform: rotate(-10deg);
+  background-image: url('../img/palm1.png');
+  z-index: -1;
+  
 }
