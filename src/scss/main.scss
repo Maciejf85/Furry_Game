@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+@import url('https://fonts.googleapis.com/css?family=Carter+One');
+
 @mixin getIn{
   animation-name: fadeIn;
   animation-duration: 0.5s;
@@ -12,7 +14,7 @@
   transition: ease-in-out;
 }
 body {
-position: relative;
+  position: relative;
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -26,12 +28,14 @@ position: relative;
  left:50%;
  font-family: 'Press Start 2P',  cursive;
  transform: translate(-50%, -50%);    
+//  filter: blur(4px); 
 }
 
 section.score {
 position: relative;
 width: 200px;
 height: 100px;
+display: none;
 
 > #points{
  position: absolute;
@@ -40,8 +44,128 @@ height: 100px;
  color: #ffa200;
 }
 }
+.endBoard{
+  display: none;
+  position: relative;
+  width: 480px;
+  height: 530px;
+  margin: -150px auto 0 auto;
+  background-image: url('../img/Level\ Cleared.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 
+   .endBoard-replay{
+    position: absolute;
+    left:50%;
+    bottom:-10px;
+    width: 69px;
+    height: 71px;
+    transform: translate(-50%,0);
+    background-image: url('../img/Reload\ btn.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &:hover{
+      cursor: pointer;
+      transform: translate(-50%, 0) scale(1.1);
+    }
+  }
+
+  .endBoard-score{
+    position: absolute;
+    top:55%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Carter One', cursive;
+    text-transform: capitalize;
+    color:white;
+    font-size: 32px;
+    text-shadow: -2px 3px 2px #3a230a;
+    .end-score{
+      margin-left:15px;
+    }
+  }
+}
+
+.startBoard{
+  display: none;
+  position: relative;
+  width: 640px;
+  height: 430px;
+  margin: -150px auto 0 auto;
+  background-image: url('../img/Level\ Select.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  .buttons{
+    position: absolute;
+    left:50%;
+    top:70%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-evenly;
+    height: 60px;
+    width: 90%;
+   }
+   
+   .easyBtn,
+   .mediumBtn,
+   .hardBtn{
+    width: 170px;
+    background-image: url('../img/Easy.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: grayscale(55%) ;
+   }
+   .mediumBtn{
+    background-image: url('../img/Medium.png');
+   }
+   .hardBtn{
+    background-image: url('../img//Hard.png');    
+   }
+   .easyBtn:hover,
+   .mediumBtn:hover,
+   .hardBtn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    filter: grayscale(0) ;
+   }
+   .easyBtn:active,
+   .mediumBtn:active,
+   .hardBtn:active{
+    transform: scale(0.9);
+    cursor: pointer;
+   }
+
+}
+
+.openTable{
+  display: none;
+  font-family: 'Carter One', cursive;
+  background: white;
+  opacity: 0.7;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left:0;
+  
+
+  .openTable-text,
+  .openTable-counter{
+    color: black;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    font-size: 55px;
+    transform: translate(-50%, -50%);    
+  }
+  .openTable-counter{
+    top:55%;
+  }
+}
 #board {
+ display: none;
  width: 640px;
  height: 640px;
  margin: 1em auto;
@@ -93,38 +217,11 @@ section#over pre {
 
 @for $i from 1 through 100 {
  .box-#{$i}{
-   background: hsl(50 + ($i * 2) , 40%, 60%);
+   background: hsl(85 + ($i) , 66%, 60%);
+  //  background: hsl(200 + ($i) , 60%, 60%);
  }
 }
 
-.buttons{
- display: flex;
- justify-content: space-between;
- height: 60px;
-}
-
-.easyBtn,
-.mediumBtn,
-.hardBtn{
- width: 170px;
- background-image: url('../img/Easy.png');
- background-repeat: no-repeat;
- background-size: contain;
- filter: grayscale(55%) ;
-}
-.mediumBtn{
- background-image: url('../img/Medium.png');
-}
-.hardBtn{
- background-image: url('../img//Hard.png');    
-}
-.easyBtn:hover,
-.mediumBtn:hover,
-.hardBtn:hover{
- transform: scale(1.1);
- cursor: pointer;
- filter: grayscale(0) ;
-}
 
 .score{
  background-image: url('../img/Points.png');
@@ -160,8 +257,8 @@ filter: grayscale(0);
 	height:90px;
   background-image: url(../img/person.png);
   background-repeat: no-repeat;
-  //  border: 1px solid red;
-  animation-duration: 0.9s;
+  animation-name: walk-right;
+  animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-timing-function: steps(5);
   animation-fill-mode: both;
@@ -216,4 +313,12 @@ filter: grayscale(0);
       background-position: -633px -8px;
 
   }
+}
+.mark{
+  text-align: right;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  opacity: 0.5;
 }

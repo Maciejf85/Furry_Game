@@ -7,18 +7,46 @@ var arr = ["url(../src/img/diamond-1.png)" ,
            "url(../src/img/diamond-4.png)" ,
            "url(../src/img/diamond-5.png)"
           ];
-     
+var starterBoard = document.querySelector('.startBoard');
+var endBoard = document.querySelector('.endBoard');
+          // var get = new Audio('../sounds/')
 var character = document.createElement('div');
      character.classList.add('girl');
 
 var diamondEl = document.createElement('div');
      diamondEl.classList.add('diamond');
 
+var container = document.querySelector('.backgroundContainer');
+var replay = document.querySelector('.endBoard-replay');
+     replay.addEventListener('click', startBoard);
+
+var hardBtn = document.querySelectorAll('[class*=Btn]');
+     hardBtn.forEach(function(item){
+          item.addEventListener('click',function(){
+               var level = this.classList.value;
+               if(level == "easyBtn") {
+                    level = 500;
+                    character.style.animationDuration = '1s';
+                    }
+               else if(level == "mediumBtn"){
+                    level = 200;
+                    character.style.animationDuration = '0.5s';
+               }
+               if(level == "hardBtn"){
+                    level = 70;
+                    character.style.animationDuration = '0.25s';
+               }
+              startGame(level);
+          })
+})
+
+
+
 var Character = function() {
      this.x = 0,
      this.y = 0,
      this.direction = "right"
-     console.log(this.direction);
+     this.speed = 3000;
 }
 
 var Diamond = function() {
@@ -27,17 +55,23 @@ var Diamond = function() {
 }
 
 var Game = function() {
+
      this.char = new Character(),
      this.diamond = new Diamond(),
      this.board = document.querySelectorAll('#board > div'),
-     this.score =  0,
      this.scoreBoard = document.getElementById('points');
+     this.mainBoard = document.getElementById('board');
+     this.boardScreen = document.querySelector('.backgroundContainer');
+     this.boardScore = document.querySelector('.score');
+     this.endScore = document.querySelector('.end-score');
      var _this = this;
-     this.speed = 500;
+     this.score =  0,
+     this.x = 0,
+     this.y = 0
+
      document.addEventListener('keydown', function(event){
           _this.turnChar(event);
       });
-
 
      
      this.position = function(x,y) {
@@ -45,19 +79,19 @@ var Game = function() {
      }     
 
      this.showDiamond = function() {
-          var diamNumber = Math.round(Math.random() * (arr.length-1))
-          diamondEl.style.backgroundImage = arr[diamNumber];
-          this.board[this.position(this.diamond.x , this.diamond.y)].appendChild(diamondEl);
+          var diamNumber = Math.round(Math.random() * (arr.length-1)) //losowanie diamentu
+          diamondEl.style.backgroundImage = arr[diamNumber]; // przypisanie diamentu z tablicy do background
+          this.board[this.position(this.diamond.x , this.diamond.y)].appendChild(diamondEl); //
      }
 
      this.showCharacter = function(){
-
           this.board[this.position(this.char.x , this.char.y)].appendChild(character);
      }
+
      this.startTimer = function() {
           this.id = setInterval(function(){
                _this.moveChar();
-          }, this.speed)},
+          }, this.char.speed)},
 
      this.addPoint = function(){
           this.score += 1;
@@ -71,37 +105,93 @@ var Game = function() {
           character.classList.remove('up');
           character.classList.remove('down');
      }
-
+     this.gameOver = function(){
+          clearInterval(this.id);
+          this.endScore.innerHTML = this.score;
+          this.boardScreen.style.display = 'none';
+          this.boardScore.style.display = 'none';
+          endBoard.style.display = 'block';
+     }
+     this.startGame = function(level){
+          this.char.speed = level;
+          this.scoreBoard.innerHTML = this.score;
+          this.mainBoard.style.display = 'block';
+          this.boardScreen.style.display = 'block';
+          this.boardScore.style.display = 'block';
+          endBoard.style.display = 'none';
+          starterBoard.style.display = 'none';          
+     }
+     
+     this.openTable = function(){
+          
+     }
 
      this.moveChar = function(){
-          this.clearClass();
-          
-          if(this.char.direction == "right") {
-               this.char.x += 1;
-               character.classList.add('right');   
-           }
 
-           else if(this.char.direction == "down") {
-               this.char.y += 1;
-               character.classList.add('down');   
-          }
-          
-          else if(this.char.direction == "left") {
-               this.char.x -= 1;
-               character.classList.add('left');   
-          }
-          
-          else if(this.char.direction == "up") {
-               character.classList.add('up');   
-               this.char.y -= 1;
-                  
-           }
-          
 
-          this.showCharacter();
-          if(this.char.x == this.diamond.x && this.char.y == this.diamond.y){
-               this.addPoint();
+          if((this.char.x >= 0 && this.char.x <= 9)  && (this.char.y >= 0 && this.char.y <= 9)){
+
+               if(this.char.direction == "right"){
+                    this.x++;
+
+                    if(this.x >= 10){
+                         this.gameOver();
+                    }else{
+                         this.char.x = this.x;
+                         this.clearClass();
+                         character.classList.add('right');   
+                    }
+               }
+
+               if(this.char.direction == "down"){
+                    this.y++;
+
+                    if(this.y >= 10){
+                         this.gameOver();
+                    }else{
+                         this.char.y = this.y;
+                         this.clearClass();
+                         character.classList.add('down');   
+                    }
+               }
+
+               if(this.char.direction == "left"){
+                    this.x--;
+
+                    if(this.x < 0){
+                         this.gameOver();
+                    }else{
+                         this.char.x = this.x;
+                         this.clearClass();
+                         character.classList.add('left');   
+                    }
+               }
+
+               if(this.char.direction == "up"){
+                    this.y--;
+
+                    if(this.y < 0){
+                         this.gameOver();
+                    }else{
+                         this.char.y = this.y;
+                         this.clearClass();
+                         character.classList.add('up');   
+                    }
+               }
+
+              
+
+
+               if(this.char.x == this.diamond.x && this.char.y == this.diamond.y){
+                    this.addPoint();
+               }
+               console.log('moveChar()' + this.char.x , this.char.y)
+               this.showCharacter();
+
           }
+
+
+
      }
           this.turnChar = function(event){
 
@@ -129,9 +219,19 @@ var Game = function() {
 
 }
 
-var game = new Game();
+function startBoard(){
+     starterBoard.style.display = "block";  
+     endBoard.style.display = 'none';   
+}
 
-game.showDiamond();
-game.startTimer();
+function startGame(level){
+     var game = new Game();
 
+     game.startGame(level);     
+     game.showCharacter();
+     game.showDiamond();
+     game.startTimer();
+}
+
+startBoard();
 
