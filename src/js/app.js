@@ -24,19 +24,23 @@ var hardBtn = document.querySelectorAll('[class*=Btn]');
      hardBtn.forEach(function(item){
           item.addEventListener('click',function(){
                var level = this.classList.value;
+               var scoreD = 0;
                if(level == "easyBtn") {
                     level = 500;
                     character.style.animationDuration = '1s';
-                    }
+                    scoreD = 1;
+               }
                else if(level == "mediumBtn"){
                     level = 200;
                     character.style.animationDuration = '0.5s';
+                    scoreD = 3;
                }
                if(level == "hardBtn"){
                     level = 70;
                     character.style.animationDuration = '0.25s';
+                    scoreD = 7;
                }
-              startGame(level);
+              startGame(level, scoreD);
           })
 })
 
@@ -65,7 +69,8 @@ var Game = function() {
      this.boardScore = document.querySelector('.score');
      this.endScore = document.querySelector('.end-score');
      var _this = this;
-     this.score =  0,
+     this.score = 0,
+     this.scoreDiff = 1,
      this.x = 0,
      this.y = 0
 
@@ -94,7 +99,7 @@ var Game = function() {
           }, this.char.speed)},
 
      this.addPoint = function(){
-          this.score += 1;
+          this.score += this.scoreDiff;
           this.scoreBoard.innerHTML = this.score;
           this.diamond = new Diamond();
           this.showDiamond();
@@ -112,7 +117,8 @@ var Game = function() {
           this.boardScore.style.display = 'none';
           endBoard.style.display = 'block';
      }
-     this.startGame = function(level){
+     this.startGame = function(level, scoreD){
+          this.scoreDiff = scoreD;
           this.char.speed = level;
           this.scoreBoard.innerHTML = this.score;
           this.mainBoard.style.display = 'block';
@@ -185,7 +191,6 @@ var Game = function() {
                if(this.char.x == this.diamond.x && this.char.y == this.diamond.y){
                     this.addPoint();
                }
-               console.log('moveChar()' + this.char.x , this.char.y)
                this.showCharacter();
 
           }
@@ -224,10 +229,10 @@ function startBoard(){
      endBoard.style.display = 'none';   
 }
 
-function startGame(level){
+function startGame(level, scoreD){
      var game = new Game();
 
-     game.startGame(level);     
+     game.startGame(level,scoreD);     
      game.showCharacter();
      game.showDiamond();
      game.startTimer();
