@@ -1,0 +1,348 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+@import url('https://fonts.googleapis.com/css?family=Carter+One');
+
+@mixin getIn{
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  transition: ease-in-out;
+}
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: -webkit-linear-gradient(top, #d4e4ef 0%, #439043 100%); 
+//  filter: blur(4px); 
+
+ }
+
+ .base{
+  position: absolute;
+  top:50%;
+  left:50%;
+  width: 1270px;
+  height: 850px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  background-image: url('../img/BaseSelect.png');
+  background-repeat: no-repeat;
+  background-position: 50%  40%;
+ }
+
+.container{
+ position: absolute;
+ top:50%;
+ left:50%;
+ font-family: 'Press Start 2P',  cursive;
+ transform: translate(-50%, -50%);    
+}
+
+section.score {
+position: relative;
+top:125px;
+width: 200px;
+height: 100px;
+display: none;
+
+> #points{
+ position: absolute;
+ top:35px;
+ right: 20px;
+ color: #ffa200;
+}
+}
+.endBoard{
+  display: none;
+  position: relative;
+  width: 480px;
+  height: 530px;
+  margin: 100px auto 0 auto;
+  background-image: url('../img/Level\ Cleared2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+  .endBoard-replay{
+    position: absolute;
+    left:50%;
+    bottom:0;
+    width: 59px;
+    height: 61px;
+    transform: translate(-50%,-50%);
+    background-image: url('../img/Reload\ btn.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+    &:hover{
+      cursor: pointer;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+  
+  .endBoard-score,{
+    position: absolute;
+    top:45%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Carter One', cursive;
+    text-transform: capitalize;
+    color:white;
+    font-size: 38px;
+    text-shadow: 0px 1px 5px rgb(58, 35, 10);
+    .end-score{
+      margin-left:15px;
+    }
+  }
+}
+.backgroundContainer{
+  position: relative;
+  margin-top: 60px;
+}
+.startBoard{
+  display: none;
+  position: relative;
+  width: 640px;
+  height: 430px;
+  margin: 0 auto;
+  background-image: url('../img/Level\ Select3.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  .buttons{
+    position: absolute;
+    left:50%;
+    top:70%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-evenly;
+    height: 60px;
+    width: 90%;
+   }
+   
+   .easyBtn,
+   .mediumBtn,
+   .hardBtn{
+    width: 170px;
+    background-image: url('../img/Easy.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: grayscale(35%) ;
+   }
+   .mediumBtn{
+    background-image: url('../img/Medium.png');
+   }
+   .hardBtn{
+    background-image: url('../img//Hard.png');    
+   }
+   .easyBtn:hover,
+   .mediumBtn:hover,
+   .hardBtn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    filter: grayscale(0) ;
+   }
+   .easyBtn:active,
+   .mediumBtn:active,
+   .hardBtn:active{
+    transform: scale(0.9);
+    cursor: pointer;
+   }
+
+}
+
+.openScreen{
+  display: none;
+  font-family: 'Carter One', cursive;
+  background: white;
+  opacity: 0.3;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 1;
+  
+
+  .openScreen-text,
+  .openScreen-counter{
+    color: black;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    font-size: 55px;
+    transform: translate(-50%, -50%);    
+  }
+  .openScreen-counter{
+    top:55%;
+  }
+}
+#board {
+ display: none;
+ width:600px;
+ height: 600px;
+ margin: 0 auto;
+ box-shadow: 0px 0px 30px 1px #a77c4b;
+}
+
+#board  > div {    
+position: relative;
+border: 1px solid #505050;
+float: left;
+width: 60px;
+height: 60px;
+}
+
+.diamond {
+position: absolute;
+top:50%;
+left: 50%;
+transform: translate(-50%, -50%);
+height: 70%;
+width: 70%;
+background-image: url('../img/diamond-1.png');
+background-repeat: no-repeat;
+background-size: contain;
+ @include getIn;
+}
+
+section#over {
+ position: fixed;
+ width: 100%;
+ height: 100%;
+ left: 0;
+ top: 0;
+ z-index: 1;
+ padding: 10px;
+}
+
+
+@for $i from 1 through 100 {
+ .box-#{$i}{
+   background: hsl(85 + ($i) , 66%, 60%);
+  //  background: hsl(200 + ($i) , 60%, 60%);
+ }
+}
+
+
+.score{
+ position: absolute;
+ top:50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-image: url('../img/Points.png');
+background-repeat: no-repeat;
+background-size: contain;
+}
+.active{
+filter: grayscale(0);
+}
+
+@keyframes fadeIn {
+  0%{
+  opacity: 0;
+  transform:  translate(-50%, -50%) scale(0);
+  }
+  25%{
+    transform:  translate(-50%, -50%) scale(1.2);
+  }
+  50%{
+    opacity: 1;
+    transform:  translate(-50%, -50%) scale(0.8);
+  }
+  100%{
+  transform:  translate(-50%, -50%) scale(1);
+  }
+}
+.girl {
+  position: absolute;
+  top:30%;
+  left:50%;
+  transform: translate(-50% ,-50%);
+	width: 40px;
+	height:90px;
+  background-image: url(../img/person.png);
+  background-repeat: no-repeat;
+  animation-name: walk-right;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(5);
+  animation-fill-mode: both;
+}
+.right{
+  animation-name: walk-right;
+}
+.left{
+  animation-name: walk-left;
+}
+
+.down{
+  animation-name: walk-down;
+}
+
+.up{
+  animation-name: walk-up;
+}
+
+@keyframes walk-right {
+  0% { 
+      background-position:-134px -213px;
+  }
+  100% { 
+      background-position:  -634px -212px;
+
+  }
+}
+@keyframes walk-left {
+  0% { 
+    background-position:-130px -312px;
+  }
+  100% { 
+    background-position:  -629px -312px;
+    
+  }
+}
+@keyframes walk-up {
+  0% { 
+      background-position:-135px -110px;
+  }
+  100% { 
+      background-position:  -635px -110px;
+
+  }
+}
+@keyframes walk-down {
+  0% { 
+      background-position:-133px -8px;
+  }
+  100% { 
+      background-position: -633px -8px;
+
+  }
+}
+.mark{
+  text-align: right;
+  font-family: 'Carter One', cursive;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  opacity: 0.5;
+}
+.palm1{
+  position: absolute;
+  top:30px;
+  left:-335px;
+  width: 474px;
+  height: 600px;
+  transform: rotate(-10deg);
+  background-image: url('../img/palm1.png');
+  z-index: -1;
+  
+}
