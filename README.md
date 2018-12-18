@@ -10,7 +10,7 @@
 
 
 # Furry Game
-## http://maciejf.pl/furry-game/dist/
+### http://maciejf.pl/furry-game/dist/
 
 ## Przygotowanie
 
