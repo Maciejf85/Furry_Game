@@ -21,4 +21,4 @@
 
 <img alt="Logo" src="http://maciejf.pl/img/girl.png" width="250">
 
-<img alt="Logo" src="http://maciejf.pl/img/diamonds.png" width="250">
+<img alt="Logo" src="http://maciejf.pl/img/diamonds2.png">
