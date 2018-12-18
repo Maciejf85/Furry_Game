@@ -9,11 +9,10 @@ var arr = ["url(../src/img/diamond-1.png)" ,
 
           
 
-var bestPoints= 0;
+var bestPoints = 0;
 var bestPointsEnd = document.querySelector('.end-bestScore');
 var starterBoard = document.querySelector('.startBoard');
 var endBoard = document.querySelector('.endBoard');
-          // var get = new Audio('../sounds/')
 var character = document.createElement('div');
      character.classList.add('girl');
 
@@ -110,9 +109,15 @@ var Game = function() {
           this.boardScreen.style.display = 'none';
           this.boardScore.style.display = 'none';
           endBoard.style.display = 'block';
-          if(this.score < bestPoints){
-           bestPointsEnd.innerHTML = bestPoints;
-          }else{bestPointsEnd.innerHTML = this.score             
+
+          if(this.score <= bestPoints){
+               console.log('gameOver => this.score <= bestScore '+ this.score , bestPoints)
+               bestPointsRead();
+               bestPointsEnd.innerHTML = bestPoints;
+          }else{
+               bestPointsEnd.innerHTML = this.score;
+               newRecord(this.score);             
+               console.log('gameOver => this.score > bestScore '+ this.score , bestPoints)
           }
      }
      this.startGame = function(level, scoreD){
@@ -123,7 +128,7 @@ var Game = function() {
           this.boardScreen.style.display = 'block';
           this.boardScore.style.display = 'block';
           endBoard.style.display = 'none';
-          starterBoard.style.display = 'none';          
+          starterBoard.style.display = 'none';         
      }
      
      this.openTable = function(){
@@ -218,9 +223,9 @@ var Game = function() {
                }
           }
           
-     
-
 }
+
+
 
 function startBoard(){
      starterBoard.style.display = "block";  
@@ -238,14 +243,32 @@ function startGame(level, scoreD){
 
 startBoard();
 
-$.ajax({
-     type: "POST", //typ połączenia na post
-     url: "../points/points.php",
-     data: {
-         score: '1000'
-          },
-}).done(function(response){
-     console.log(response);
-}).fail(function(error){
-     console.log('error' + error)
-})
+function newRecord(result){
+
+     var score = {
+          points: result
+     }
+
+$.ajax({ //Wysłanie nowego wyniku
+          type: "POST", //typ połączenia na post
+          url: "../points/points.php",
+          data: {
+          score: score
+               },
+     }).done(function(){
+          bestPointsRead();
+     }).fail(function(error){
+               console.log('error' + error)
+          });
+
+}
+function bestPointsRead(){
+          $.ajax({
+               url: "../points/points.php"
+          }).done(function(response){
+               bestPoints = response.points;
+     }).fail(function(error){
+          console.log('error' + error)
+     })
+}
+bestPointsRead();

@@ -1,14 +1,13 @@
 <?php
-// $result =  $_POST['score'];
-$result =  array ('a'=>1,'b'=>2,'c'=>3,'d'=>4,'e'=>5);
-
-$myfile = fopen("points.json", "w");
-$myfile2 = fopen("tekst.json", "w");
-$json = json_encode($result);
-
-file_put_contents("tekst.json", $json);
-file_put_contents("points.json", $result);
-
-echo $json;
-
+if(isset($_POST['score'])){
+     $result = $_POST['score'];
+     $json = json_encode($result);
+     file_put_contents("points.json", $json);     
+     header('Content-Type: application/json');
+     echo $json;
+}else{
+     $result = file_get_contents('points.json');
+     header('Content-Type: application/json');
+     echo $result;
+}
 ?>
