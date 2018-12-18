@@ -1,8 +1,8 @@
-## http://maciejf.pl/furry-game/dist/
+
 
 <img alt="Logo" src="http://maciejf.pl/img/Furry-main.png" width="100%">
 
-<img alt="Logo" src="http://maciejf.pl/img/girl.png" width="250"><img alt="Logo" src="http://maciejf.pl/img/diamonds.png" width="250">
+
 
 
 <img alt="Logo" src="http://maciejf.pl/img/board1.jpg" width="50%"><img alt="Logo" src="http://maciejf.pl/img/board2.jpg" width="50%">
@@ -10,6 +10,7 @@
 
 
 # Furry Game
+## http://maciejf.pl/furry-game/dist/
 
 ## Przygotowanie
 
@@ -18,3 +19,6 @@
 > - [...]
 > - [...]
 
+<img alt="Logo" src="http://maciejf.pl/img/girl.png" width="250">
+
+<img alt="Logo" src="http://maciejf.pl/img/diamonds.png" width="250">
