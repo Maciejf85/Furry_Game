@@ -20,6 +20,8 @@ body {
   margin: 0;
   padding: 0;
   background: -webkit-linear-gradient(top, #d4e4ef 0%, #439043 100%); 
+//  filter: blur(4px); 
+
  }
 
  .base{
@@ -41,7 +43,6 @@ body {
  left:50%;
  font-family: 'Press Start 2P',  cursive;
  transform: translate(-50%, -50%);    
-//  filter: blur(4px); 
 }
 
 section.score {
@@ -172,20 +173,21 @@ display: none;
 
 }
 
-.openTable{
+.openScreen{
   display: none;
   font-family: 'Carter One', cursive;
   background: white;
-  opacity: 0.7;
+  opacity: 0.3;
   width: 100vw;
   height: 100vh;
   position: fixed;
   top:0;
   left:0;
+  z-index: 1;
   
 
-  .openTable-text,
-  .openTable-counter{
+  .openScreen-text,
+  .openScreen-counter{
     color: black;
     position: absolute;
     top:40%;
@@ -193,7 +195,7 @@ display: none;
     font-size: 55px;
     transform: translate(-50%, -50%);    
   }
-  .openTable-counter{
+  .openScreen-counter{
     top:55%;
   }
 }
