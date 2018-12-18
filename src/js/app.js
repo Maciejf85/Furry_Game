@@ -1,12 +1,16 @@
 import '../scss/main.scss';
 
-
 var arr = ["url(../src/img/diamond-1.png)" , 
            "url(../src/img/diamond-2.png)" , 
            "url(../src/img/diamond-3.png)" , 
            "url(../src/img/diamond-4.png)" ,
            "url(../src/img/diamond-5.png)"
           ];
+
+          
+
+var bestPoints= 0;
+var bestPointsEnd = document.querySelector('.end-bestScore');
 var starterBoard = document.querySelector('.startBoard');
 var endBoard = document.querySelector('.endBoard');
           // var get = new Audio('../sounds/')
@@ -44,19 +48,9 @@ var hardBtn = document.querySelectorAll('[class*=Btn]');
           })
 })
 
+import { Character } from './char';
+import { Diamond } from './diam';
 
-
-var Character = function() {
-     this.x = 0,
-     this.y = 0,
-     this.direction = "right"
-     this.speed = 3000;
-}
-
-var Diamond = function() {
-     this.x = Math.floor(Math.random() * 10),
-     this.y = Math.floor(Math.random() * 10)
-}
 
 var Game = function() {
 
@@ -116,6 +110,10 @@ var Game = function() {
           this.boardScreen.style.display = 'none';
           this.boardScore.style.display = 'none';
           endBoard.style.display = 'block';
+          if(this.score < bestPoints){
+           bestPointsEnd.innerHTML = bestPoints;
+          }else{bestPointsEnd.innerHTML = this.score             
+          }
      }
      this.startGame = function(level, scoreD){
           this.scoreDiff = scoreD;
@@ -240,3 +238,14 @@ function startGame(level, scoreD){
 
 startBoard();
 
+$.ajax({
+     type: "POST", //typ połączenia na post
+     url: "../points/points.php",
+     data: {
+         score: '1000'
+          },
+}).done(function(response){
+     console.log(response);
+}).fail(function(error){
+     console.log('error' + error)
+})
