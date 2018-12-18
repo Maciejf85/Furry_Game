@@ -19,6 +19,6 @@
 > - [...]
 > - [...]
 
-<img alt="Logo" src="http://maciejf.pl/img/girl2.png">
+<img alt="Logo" src="http://maciejf.pl/img/girl.png">
 
 <img alt="Logo" src="http://maciejf.pl/img/diamonds2.png">
