@@ -13,13 +13,13 @@ var bestPoints = 0;
 var bestPointsEnd = document.querySelector('.end-bestScore');
 var starterBoard = document.querySelector('.startBoard');
 var endBoard = document.querySelector('.endBoard');
+
 var character = document.createElement('div');
      character.classList.add('girl');
 
 var diamondEl = document.createElement('div');
      diamondEl.classList.add('diamond');
 
-var container = document.querySelector('.backgroundContainer');
 var replay = document.querySelector('.endBoard-replay');
      replay.addEventListener('click', startBoard);
 
@@ -114,7 +114,9 @@ var Game = function() {
                console.log('gameOver => this.score <= bestScore '+ this.score , bestPoints)
                bestPointsRead();
                bestPointsEnd.innerHTML = bestPoints;
+               endBoard.classList.remove('win');
           }else{
+               endBoard.classList.add('win');
                bestPointsEnd.innerHTML = this.score;
                newRecord(this.score);             
                console.log('gameOver => this.score > bestScore '+ this.score , bestPoints)
@@ -129,10 +131,6 @@ var Game = function() {
           this.boardScore.style.display = 'block';
           endBoard.style.display = 'none';
           starterBoard.style.display = 'none';         
-     }
-     
-     this.openTable = function(){
-          
      }
 
      this.moveChar = function(){

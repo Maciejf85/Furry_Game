@@ -65,7 +65,7 @@ display: none;
   width: 480px;
   height: 530px;
   margin: 100px auto 0 auto;
-  background-image: url('../img/Level\ Cleared2.png');
+  background-image: url('../img/Level\ Cleared.png');
   background-repeat: no-repeat;
   background-size: contain;
   
@@ -103,7 +103,6 @@ display: none;
       margin-left:15px;
     }
    
-
   }
   .endBoard-best{
     font-size: 32px;
@@ -115,6 +114,18 @@ display: none;
 
   }
   
+}
+.win{
+  background-image: url('../img/Level\ Cleared-win.png');
+
+  .endBoard-score{
+    display: none;
+  }
+
+  .endBoard-best{
+    top:70%;
+  }
+
 }
 
 .backgroundContainer{
@@ -173,32 +184,6 @@ display: none;
 
 }
 
-.openScreen{
-  display: none;
-  font-family: 'Carter One', cursive;
-  background: white;
-  opacity: 0.3;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top:0;
-  left:0;
-  z-index: 1;
-  
-
-  .openScreen-text,
-  .openScreen-counter{
-    color: black;
-    position: absolute;
-    top:40%;
-    left: 50%;
-    font-size: 55px;
-    transform: translate(-50%, -50%);    
-  }
-  .openScreen-counter{
-    top:55%;
-  }
-}
 #board {
  display: none;
  width:600px;
@@ -343,22 +328,13 @@ filter: grayscale(0);
   }
 }
 .mark{
-  text-align: right;
+  text-align: center;
   font-family: 'Carter One', cursive;
   position: fixed;
   bottom: 10px;
-  right: 10px;
+  left: 50%;
+  transform: translate(-50%,0);
   color: white;
   opacity: 0.5;
 }
-.palm1{
-  position: absolute;
-  top:30px;
-  left:-335px;
-  width: 474px;
-  height: 600px;
-  transform: rotate(-10deg);
-  background-image: url('../img/palm1.png');
-  z-index: -1;
-  
-}
+
