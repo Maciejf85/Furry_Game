@@ -7,11 +7,11 @@
 
 > - Gra napisana obiektowo według wytycznych warsztatu.
 > - Ruch postaci osiągnięty przy pomocy sprites image. 
-<img alt="Logo" src="http://maciejf.pl/img/girl.png" height="120px">
+> - <img alt="Logo" src="http://maciejf.pl/img/girl.png" height="120px">
 > - Gra umożliwia wybór poziomu trudności polegający na szybszym poruszaniu się postaci.
 > - Przy pomocy zapytań ajax i prostego skryptu w PHP gra zapisuje na serwerze najlepszy wynik.
 > - Każdorazowo losowany jest diament w jednej z pięciu grafik.
-<img alt="Logo" src="http://maciejf.pl/img/diamonds2.png">
+> - <img alt="Logo" src="http://maciejf.pl/img/diamonds2.png">
 
 
 ## Zasady gry
@@ -31,5 +31,4 @@
 
 
 
-<img alt="Logo" src="http://maciejf.pl/img/Furry-main.png" width="100%">
 <img alt="Logo" src="http://maciejf.pl/img/board1.jpg" width="25%"><img alt="Logo" src="http://maciejf.pl/img/board2.jpg" width="25%"><img alt="Logo" src="http://maciejf.pl/img/board3.jpg" width="25%"><img alt="Logo" src="http://maciejf.pl/img/board4.jpg" width="25%">
