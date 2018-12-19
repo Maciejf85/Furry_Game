@@ -1,5 +1,6 @@
 
 # Furry Game
+### Zapraszam do gry 
 ### http://maciejf.pl/furry-game/dist/
 
 ## Opis
