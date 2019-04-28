@@ -5,14 +5,15 @@
 
 ## Opis
 
-
-
-> - Ruch postaci osiągnięty przy pomocy `sprites image`. 
-> - <img alt="Logo" src="http://maciejf.pl/img/girl.png" height="120px">
-> - Gra umożliwia wybór jednego z trzech poziomów trudności.
-> - Przy pomocy zapytań AJAX i prostego skryptu w PHP gra zapisuje na serwerze najlepszy wynik.
-> - Każdorazowo losowany jest diament z jednej z pięciu grafik.
-> - <img alt="Logo" src="http://maciejf.pl/img/diamonds2.png">
+ Ruch postaci osiągnięty przy pomocy `sprites image`. 
+ <img alt="Logo" src="http://maciejf.pl/img/girl.png" height="120px">
+ Gra umożliwia wybór jednego z trzech poziomów trudności.
+ Przy pomocy zapytań AJAX i prostego skryptu w PHP gra zapisuje na serwerze najlepszy wynik.
+ Każdorazowo losowany jest diament z jednej z pięciu grafik.
+ <img alt="Logo" src="http://maciejf.pl/img/diamonds2.png">
+ 
+ ### Użyte technologie:
+<img alt="Logo" src="http://maciejf.pl/img/gameOfLife/gameOfLife.png" />
 
 
 ## Zasady gry
@@ -28,8 +29,9 @@
 
 
 
+<img alt="Logo" src="http://maciejf.pl/img/board1.jpg" width="100%">
+<img alt="Logo" src="http://maciejf.pl/img/board2.jpg" width="100%">
+<img alt="Logo" src="http://maciejf.pl/img/furryGame.gif" width="100%">
 
+_niska jakość wynika z ograniczenia palety kolorów do 256_
 
-
-
-<img alt="Logo" src="http://maciejf.pl/img/board1.jpg" width="25%"><img alt="Logo" src="http://maciejf.pl/img/board2.jpg" width="25%"><img alt="Logo" src="http://maciejf.pl/img/board3.jpg" width="25%"><img alt="Logo" src="http://maciejf.pl/img/board4.jpg" width="25%">
