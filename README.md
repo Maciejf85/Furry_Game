@@ -7,6 +7,7 @@
 
  Ruch postaci osiągnięty przy pomocy `sprites image`. 
  <img alt="Logo" src="http://maciejf.pl/img/girl.png" height="120px">
+ <br>
  Gra umożliwia wybór jednego z trzech poziomów trudności.
  Przy pomocy zapytań AJAX i prostego skryptu w PHP gra zapisuje na serwerze najlepszy wynik.
  Każdorazowo losowany jest diament z jednej z pięciu grafik.
